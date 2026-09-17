@@ -128,16 +128,6 @@ runs:
             echo "::endgroup::"
             echo "[+] Coccinelle is installed."
 
-            # Get MKDTBO tool to System
-            mkdir $GITHUB_WORKSPACE/mkdtbo
-            cd $GITHUB_WORKSPACE/mkdtbo
-            ${{ env.CURLX }} https://android.googlesource.com/platform/system/libufdt/+archive/refs/heads/main/utils/src.tar.gz src.tar.gz
-            tar zxvf src.tar.gz
-            rm -f src.tar.gz
-            ln -s mkdtboimg.py /usr/bin/mkdtboimg
-            ln -s mkdtboimg.py /usr/bin/mkdtimg
-            cd $GITHUB_WORKSPACE
-
             if [ "${{ env.PYTHON_VERSION }}" == "3" ]; then
                 apt install python3 -y
                 rm -rf /usr/bin/python
@@ -177,16 +167,6 @@ runs:
             sudo make install
             echo "::endgroup::"
             echo "[+] Coccinelle is installed."
-
-            # Get MKDTBO tool to System
-            mkdir $GITHUB_WORKSPACE/mkdtbo
-            cd $GITHUB_WORKSPACE/mkdtbo
-            ${{ env.CURLX }} https://android.googlesource.com/platform/system/libufdt/+archive/refs/heads/main/utils/src.tar.gz src.tar.gz
-            tar zxvf src.tar.gz
-            rm -f src.tar.gz
-            sudo ln -s mkdtboimg.py /usr/bin/mkdtboimg
-            sudo ln -s mkdtboimg.py /usr/bin/mkdtimg
-            cd $GITHUB_WORKSPACE
 
             if [ "${{ env.PYTHON_VERSION }}" == "3" ]; then
                 sudo apt install python3 -y
@@ -232,16 +212,6 @@ runs:
             sudo apt install ./libtinfo5.deb
             rm -f libtinfo5.deb
 
-            # Get MKDTBO tool to System
-            mkdir $GITHUB_WORKSPACE/mkdtbo
-            cd $GITHUB_WORKSPACE/mkdtbo
-            ${{ env.CURLX }} https://android.googlesource.com/platform/system/libufdt/+archive/refs/heads/main/utils/src.tar.gz src.tar.gz
-            tar zxvf src.tar.gz
-            rm -f src.tar.gz
-            sudo ln -s mkdtboimg.py /usr/bin/mkdtboimg
-            sudo ln -s mkdtboimg.py /usr/bin/mkdtimg
-            cd $GITHUB_WORKSPACE
-
             if [ "${{ env.PYTHON_VERSION }}" == "3" ]; then
                 sudo apt install python3 -y
                 sudo rm -rf /usr/bin/python
@@ -286,16 +256,6 @@ runs:
             pacman -S coccinelle --noconfirm
             echo "::endgroup::"
             echo "[+] Coccinelle is installed."
-
-            # Get MKDTBO tool to System
-            mkdir $GITHUB_WORKSPACE/mkdtbo
-            cd $GITHUB_WORKSPACE/mkdtbo
-            ${{ env.CURLX }} https://android.googlesource.com/platform/system/libufdt/+archive/refs/heads/main/utils/src.tar.gz src.tar.gz
-            tar zxvf src.tar.gz
-            rm -f src.tar.gz
-            ln -s mkdtboimg.py /usr/bin/mkdtboimg
-            ln -s mkdtboimg.py /usr/bin/mkdtimg
-            cd $GITHUB_WORKSPACE
 
             if [ "${{ env.PYTHON_VERSION }}" == "3" ]; then
                 pacman -S python3 --noconfirm
