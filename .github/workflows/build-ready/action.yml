@@ -109,12 +109,9 @@ runs:
         shell: bash
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
-
           echo "::group::[+] Starting clean hook..."
-          cp /tmp/Bin/clean_hook.sh ./
-          bash clean_hook.sh
           echo "::endgroup::"
-          echo "[+] Cleaned hook."
+          echo "[+] Cleaned hook bypassed."
 
       - name: Set KernelSU
         shell: bash
