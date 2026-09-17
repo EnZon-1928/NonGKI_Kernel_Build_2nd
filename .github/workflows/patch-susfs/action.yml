@@ -27,7 +27,7 @@ runs:
           fi
 
       - name: Set KSU and SUSFS for DEFCONFIG
-        if: env.SUSFS_ENABLE == 'true'
+        if: env.SUSFS_ENABLE == 'false'
         shell: bash
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
