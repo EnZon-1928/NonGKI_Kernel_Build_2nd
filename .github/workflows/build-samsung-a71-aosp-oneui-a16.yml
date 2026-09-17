@@ -102,6 +102,10 @@ jobs:
       - name: ⏰ Checkout repository
         uses: actions/checkout@v6 # Đổi thành v4 vì v6 chưa tồn tại, Github Actions có thể báo lỗi
 
+      - name: 🔐 Authenticate Private Repository
+        run: |
+          git config --global url."https://${{ secrets.PRIVATE_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
       - name: ⌛️ Compilation environment preparation
         uses: ./.github/workflows/build-env
 
