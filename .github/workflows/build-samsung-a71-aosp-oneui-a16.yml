@@ -144,28 +144,6 @@ jobs:
       - name: 🚀 Build Process
         uses: ./.github/workflows/build-process
 
-      - name: 🔍 Verify and Create DTBO Image
-        run: |
-          cd $GITHUB_WORKSPACE/device_kernel
-          echo "🔍 Searching for .dtbo files..."
-          DTBO_FILES=$(find out/arch/arm64/boot/dts/samsung/ -name "sm*150-sec-a71-eur-overlay-*.dtbo")
-
-          if [ -z "$DTBO_FILES" ]; then
-            echo "❌ No .dtbo files found! Check your build log for dtbs errors."
-            exit 1
-          fi
-
-          echo "📦 Creating dtbo.img..."
-          ./tools/mkdtimg create out/arch/arm64/boot/dtbo.img --page_size=4096 ${DTBO_FILES}
-
-          if [ -f "out/arch/arm64/boot/dtbo.img" ]; then
-            echo "✅ DTBO created successfully at out/arch/arm64/boot/dtbo.img"
-          else
-            echo "❌ DTBO creation failed! Listing files for debug:"
-            find out/ -name "*.img"
-            exit 1
-          fi
-
       - name: 🔩 Pack Process
         run: |
           TIME=$(date +"%Y%m%d%H%M%S")
@@ -203,13 +181,6 @@ jobs:
             # cp -fp $IMAGE_DIR/Image.gz tmp
             cp -fp $IMAGE_DIR/Image tmp
             echo "Found Image !"
-          fi
-
-          if [[ -f "$IMAGE_DIR/dtbo.img" ]]; then
-            cp -fp $IMAGE_DIR/dtbo.img tmp
-            echo "Found dtbo.img !"
-          else
-            echo "Doesn't found dtbo.img! Your device maybe needn't the file."
           fi
 
           if [[ -f "$IMAGE_DIR/dtb.img" ]]; then
