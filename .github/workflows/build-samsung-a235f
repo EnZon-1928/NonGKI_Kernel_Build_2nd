@@ -83,7 +83,7 @@ env:
   SKIP_PATCH: "false"
 
   BUILD_OTHER_CONFIG: "false"
-  MERGE_CONFIG_FILES: "a71.config"
+  MERGE_CONFIG_FILES: ""
 
   FREE_MORE_SPACE: "false"
       
