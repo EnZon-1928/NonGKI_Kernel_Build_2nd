@@ -15,8 +15,8 @@ env:
   KERNEL_SOURCE : "https://github.com/EnZon-1928/ZharVe1L_Kernel.git"
   KERNEL_BRANCH : "clean-base"
 
-  CLANG_SOURCE : "https://github.com/Neutron-Toolchains/clang-build-catalogue/releases/download/26052026/neutron-clang-26052026.tar.zst"
-  CLANG_BRANCH : ""
+  CLANG_SOURCE : "https://github.com/Neutron-Toolchains/antman.git"
+  CLANG_BRANCH : "main"
 
   GCC_GNU : true
   GCC_64_SOURCE : "https://github.com/KudProject/aarch64-linux-android-4.9.git"
