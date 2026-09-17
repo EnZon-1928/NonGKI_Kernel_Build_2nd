@@ -104,8 +104,7 @@ jobs:
 
       - name: 🔐 Authenticate Private Repository
         run: |
-          git config --global url."https://${{ secrets.PRIVATE_TOKEN }}@github.com/".insteadOf "https://github.com/"
-
+          git config --global url."https://x-access-token:${{ secrets.PRIVATE_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - name: ⌛️ Compilation environment preparation
         uses: ./.github/workflows/build-env
 
