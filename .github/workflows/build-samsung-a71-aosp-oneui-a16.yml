@@ -116,16 +116,17 @@ jobs:
 
       - name: 🪛 Extra Kernel Options
         run: |
-          cd $GITHUB_WORKSPACE/device_kernel
-          sed -i 's/CONFIG_LOCALVERSION="-Paradigm"/CONFIG_LOCALVERSION="-HaoticKernel"/g' arch/arm64/configs/sdmmagpie_defconfig
-          echo "[+] Kernel name has been updated to -HaoticKernel-ReSukiSU"
-          sed -i -e '/CONFIG_DEBUG_KERNEL/d' -e '/CONFIG_KALLSYMS/d' -e '/CONFIG_KALLSYMS_ALL/d' arch/arm64/configs/sdmmagpie_defconfig
-          cat <<EOF >> arch/arm64/configs/sdmmagpie_defconfig
-          CONFIG_DEBUG_KERNEL=y
-          CONFIG_KALLSYMS=y
-          CONFIG_KALLSYMS_ALL=y
-          EOF
-          echo "[+] Fixed KPM feature"
+          echo "Fixing Samsung Kconfig warnings..."
+          sed -i 's/bool "Samsung TN Ramdump Feature"/tristate "Samsung TN Ramdump Feature"/' drivers/samsung/debug/Kconfig
+          sed -i '/^choice$/,/^endchoice$/ s/default [yn]//g' drivers/samsung/debug/Kconfig
+
+            # Fix blank help text warning for SENSORS_A96T365IF
+          echo "Fixing sensors Kconfig help text..."
+          sed -i '/config SENSORS_A96T365IF/,/help/ s/^[[:space:]]*help[[:space:]]*$/\thelp\n\t  Enable A96T365IF sensor./' drivers/sensors/Kconfig
+
+          # Fix type redefinition warning for VBUS_NOTIFIER
+          echo "Fixing vbus_notifier Kconfig type redefinition..."
+          sed -i 's/tristate "VBUS notifier support"/bool "VBUS notifier support"/' drivers/usb/common/vbus_notifier/Kconfig
 
       - name: 🧰 Patch Kernel of Re:Kernel
         uses: ./.github/workflows/patch-rekernel
