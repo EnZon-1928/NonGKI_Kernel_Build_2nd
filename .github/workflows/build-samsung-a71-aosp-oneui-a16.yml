@@ -9,16 +9,15 @@ env:
   DEVICE_NAME : "SM-A235F"
   DEVICE_CODENAME : "a23nsxx"
 
-  CUSTOM_CMDS : "CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu-"
-  EXTRA_CMDS : "LLVM_IAS=1 CC=clang HOSTCFLAGS='-fcommon -Wno-deprecated-declarations' KCFLAGS='-Wno-format-overflow -Wno-single-bit-bitfield-constant-conversion -Wno-format-truncation-non-kprintf -Wno-format-truncation -Wno-void-pointer-to-enum-cast -Wno-strict-prototypes -Wno-pointer-to-int-cast -Wno-fortify-source -Wno-align-mismatch -Wno-default-const-init-var-unsafe -Wno-implicit-int -Wno-unused-but-set-variable -Wno-implicit-enum-enum-cast -Wno-default-const-init-field-unsafe'"
-
+  CUSTOM_CMDS : "CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-"
+  EXTRA_CMDS : "CC=clang"
   KERNEL_SOURCE : "https://github.com/EnZon-1928/ZharVe1L_Kernel.git"
   KERNEL_BRANCH : "clean-base"
 
-  CLANG_SOURCE : "https://github.com/Neutron-Toolchains/antman.git"
-  CLANG_BRANCH : "main"
+  CLANG_SOURCE : "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86"
+  CLANG_BRANCH : "master"
 
-  GCC_GNU : true
+  GCC_GNU : false
   GCC_64_SOURCE : "https://github.com/KudProject/aarch64-linux-android-4.9.git"
   GCC_64_BRANCH : "master"
   GCC_32_SOURCE : "https://github.com/KudProject/arm-linux-androideabi-4.9.git"
@@ -61,7 +60,7 @@ env:
   SUSFS_FOLDER_FIXED: "a71_sm7150"
   SUSFS_PATCH_FIXED: "susfs_fixed"
 
-  REKERNEL_ENABLE: "true"
+  REKERNEL_ENABLE: "false"
   DROIDSPACES_ENABLE: "false"
   NOMOUNT_ENABLE: "false" # if u need NoMount.
 
