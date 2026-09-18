@@ -64,7 +64,7 @@ env:
   DROIDSPACES_ENABLE: "false"
   NOMOUNT_ENABLE: "false" # if u need NoMount.
 
-  HOOK_METHOD: "syscall"
+  HOOK_METHOD: "inline"
 
   KERNEL_PATCH: "true"
 
